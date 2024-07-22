@@ -1,7 +1,19 @@
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Loader2 } from "lucide-react";
 
 const Index = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleClick = () => {
+    setIsLoading(true);
+    // Simulate an async operation
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <header className="bg-gray-800 text-white p-4">
@@ -15,7 +27,16 @@ const Index = () => {
           </CardHeader>
           <CardContent>
             <p className="mb-4">This is a bare-bones application. Start building your content here.</p>
-            <Button>Get Started</Button>
+            <Button onClick={handleClick} disabled={isLoading}>
+              {isLoading ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Please wait
+                </>
+              ) : (
+                "Get Started"
+              )}
+            </Button>
           </CardContent>
         </Card>
       </main>
