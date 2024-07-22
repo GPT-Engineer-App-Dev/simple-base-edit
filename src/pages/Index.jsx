@@ -3,10 +3,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Loader2 } from "lucide-react";
 
-const Index = () => {
-  const [isLoading, setIsLoading] = useState(false);
+const App: React.FC = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const handleClick = () => {
+  const handleClick = (): void => {
     setIsLoading(true);
     // Simulate an async operation
     setTimeout(() => {
@@ -48,4 +48,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default App;
